@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import Link from "next/link";
-
 import Home from "@/components/home/Home";
 import About from "@/components/about/About";
 import Navbar from "@/components/navbar/Navbar";
