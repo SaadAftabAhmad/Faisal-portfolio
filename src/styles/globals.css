@@ -2,26 +2,230 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* type writer */
+@keyframes typingTypewriting {
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  0%,
+  100% {
+    content: "U";
+  }
+
+  3%,
+  97% {
+    content: "UI";
+  }
+
+  6%,
+  94% {
+    content: "UI ";
+  }
+
+  9%,
+  91% {
+    content: "UI /";
+  }
+
+  12%,
+  88% {
+    content: "UI / ";
+  }
+
+  15%,
+  85% {
+    content: "UI / U";
+  }
+
+  18%,
+  82% {
+    content: "UI / UX";
+  }
+
+  21%,
+  79% {
+    content: "UI / UX ";
+  }
+
+  24%,
+  76% {
+    content: "UI / UX D";
+  }
+
+  27%,
+  73% {
+    content: "UI / UX De";
+  }
+
+  30%,
+  70% {
+    content: "UI / UX Des";
+  }
+
+  33%,
+  67% {
+    content: "UI / UX Desi";
+  }
+
+  36%,
+  64% {
+    content: "UI / UX Desig";
+  }
+
+  39%,
+  61% {
+    content: "UI / UX Design";
+  }
+
+  42%,
+  58% {
+    content: "UI / UX Designe";
+  }
+
+  45%,
+  55% {
+    content: "UI / UX Designer";
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes blinkTypewriting {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.typingTypewriting {
+  --caret: currentcolor;
+}
+
+.typingTypewriting::before {
+  content: "";
+  animation: typingTypewriting 8s infinite;
+}
+
+.typingTypewriting::after {
+  content: "";
+  border-right: 1px solid var(--caret);
+  animation: blinkTypewriting 0.7s linear infinite;
+}
+
+.typingTypewriting.nocaret::after {
+  border-right: 0;
+}
+
+/* designer-img */
+.border-top {
+  animation: slideGlowTop 4s ease-in-out infinite;
+}
+
+@keyframes slideGlowTop {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0.5;
+    filter: drop-shadow(0 0 5px #ff5252);
   }
+
+  50% {
+    transform: translateX(10px);
+    opacity: 1;
+    filter: drop-shadow(0 0 15px #ff0000);
+  }
+
+  100% {
+    transform: translateX(-10px);
+    opacity: 0.5;
+    filter: drop-shadow(0 0 5px #ff5252);
+  }
+}
+
+.border-bottom {
+  animation: slideGlowBottom 4s ease-in-out infinite;
+}
+
+@keyframes slideGlowBottom {
+  0% {
+    transform: translateX(10px);
+    opacity: 0.5;
+    filter: drop-shadow(0 0 5px #ff5252);
+  }
+
+  50% {
+    transform: translateX(-10px);
+    opacity: 1;
+    filter: drop-shadow(0 0 15px #ff0000);
+  }
+
+  100% {
+    transform: translateX(10px);
+    opacity: 0.5;
+    filter: drop-shadow(0 0 5px #ff5252);
+  }
+}
+
+.designer-img {
+  animation: glowFloat 4s ease-in-out infinite;
+}
+
+@keyframes glowFloat {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 4px #f05734);
+  }
+
+  50% {
+    transform: translateY(-10px);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #f05734);
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 4px #f05734);
+  }
+}
+
+/* wave icon */
+.wave-icon div {
+  animation: wave-large 4s ease-in-out infinite;
+}
+.wave-icon div:nth-child(1) {
+  animation-delay: 0s;
+}
+.wave-icon div:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.wave-icon div:nth-child(3) {
+  animation-delay: 0.8s;
+}
+.wave-icon div:nth-child(4) {
+  animation-delay: 1.2s;
+}
+@keyframes wave-large {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes wave-small {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 700px) {
+.wave-icon div {
+  animation: wave-small 4s ease-in-out infinite;
+}
 }
